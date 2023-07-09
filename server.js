@@ -9,6 +9,9 @@ dotenv.config({
   path:"./config.env"
 })
 
+app.get("/",(req,res)=>{
+  res.status(200).send("send")
+})
 
 app.get("/test",(req,res)=>{
     sendMail()
