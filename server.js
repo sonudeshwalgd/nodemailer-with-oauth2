@@ -16,8 +16,7 @@ app.get("/",(req,res)=>{
 app.get("/test",(req,res)=>{
     sendMail()
   .then((result) => {console.log('Email sent...', result);res.send(result)})
-  .catch((error) => console.log(error.message));
-    
+  .catch((error) => console.log(error.message)); 
 })
 
 app.listen(5502,()=>console.log("listning on 5502" ))
