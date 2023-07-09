@@ -31,9 +31,9 @@ async function sendMail() {
     const mailOptions = {
       from: 'sd703299@gmail.com',
       to: 'sd70329@gmail.com',
-      subject: 'Hello from gmail using API',
-      text: 'Hello from gmail email using API',
-      html: '<h1>Hello from gmail email using API</h1>',
+      subject: ' gmail using API',
+      text: ' gmail email using API',
+      html: '<h1> gmail email using API</h1>',
     };
 
     const result = await transport.sendMail(mailOptions);
