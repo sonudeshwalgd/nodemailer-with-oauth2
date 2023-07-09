@@ -2,31 +2,28 @@ const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 
 // These id's and secrets should come from .env file.
-const CLIENT_ID = '536254706227-kfuib5nf3ec6cm1u87hd6pm9lj4fjnqi.apps.googleusercontent.com';
-const CLEINT_SECRET = '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';
-const REDIRECT_URI = 'https://developers.google.com/oauthplayground';
-const REFRESH_TOKEN = '1//04vffb1ZJCDNMCgYIARAAGAQSNwF-L9IrXwO3tKO1epuSJ79A_fWrGmT8s_G8JrfUg93Dpt3q3526o0lE3WNhxJM-Z9nd_Q5wsw8';
 
-const oAuth2Client = new google.auth.OAuth2(
-  CLIENT_ID,
-  CLEINT_SECRET,
-  REDIRECT_URI
-);
-
-oAuth2Client.setCredentials({ refresh_token: REFRESH_TOKEN });
 
 async function sendMail() {
+  const oAuth2Client = new google.auth.OAuth2(
+    process.env.CLIENT_ID,
+    process.env.CLEINT_SECRET,
+    process.env.REDIRECT_URI
+  );
+  
+  oAuth2Client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
   try {
+ 
     const accessToken = await oAuth2Client.getAccessToken();
 
     const transport = nodemailer.createTransport({
       service: 'gmail',
       auth: {
         type: 'OAuth2',
-        user: 'sd70329@gmail.com',
-        clientId: CLIENT_ID,
-        clientSecret: CLEINT_SECRET,
-        refreshToken: REFRESH_TOKEN,
+        user: process.env.AUTHORIZE_EMAIL,
+        clientId: process.env.CLIENT_ID,
+        clientSecret: process.env.CLEINT_SECRET,
+        refreshToken: process.env.REFRESH_TOKEN,
         accessToken: accessToken,
       },
     });

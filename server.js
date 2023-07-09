@@ -1,9 +1,13 @@
 const express=require("express")
 const cors=require("cors")
 const sendMail=require("./app.js")
+const dotenv =require("dotenv")
 
 const app=express()
 app.use(cors({origin:"*"}))
+dotenv.config({
+  path:"./config.env"
+})
 
 
 app.get("/test",(req,res)=>{
