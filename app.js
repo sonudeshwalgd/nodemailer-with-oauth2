@@ -1,9 +1,6 @@
 const nodemailer = require('nodemailer');
 const { google } = require('googleapis');
 
-// These id's and secrets should come from .env file.
-
-
 async function sendMail() {
   const oAuth2Client = new google.auth.OAuth2(
     process.env.CLIENT_ID,
